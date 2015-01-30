@@ -2,10 +2,12 @@
 
 DoublyLinkedList::Node::Node(DataType data)
 {
+	value = data;
 }
 
 DoublyLinkedList::DoublyLinkedList()
 {
+	size_ = 0;
 }
 
 DoublyLinkedList::~DoublyLinkedList()
@@ -14,18 +16,22 @@ DoublyLinkedList::~DoublyLinkedList()
 
 unsigned int DoublyLinkedList::size() const
 {
+	return size_;
 }
 
 unsigned int DoublyLinkedList::capacity() const
 {
+	return CAPACITY;
 }
 
 bool DoublyLinkedList::empty() const
 {
+	return (size_ == 0);
 }
 
 bool DoublyLinkedList::full() const
 {
+	return (size_ == CAPACITY);
 }
 
 DoublyLinkedList::DataType DoublyLinkedList::select(unsigned int index) const
