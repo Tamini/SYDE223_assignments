@@ -19,19 +19,20 @@ int main()
 	bool seq_test2_passed = seq_test.test2();
     bool seq_test3_passed = seq_test.test3();
 
-//    bool linked_test1_passed = linked_test.test1();
-//    bool linked_test2_passed = linked_test.test2();
-//    bool linked_test3_passed = linked_test.test3();
+    bool linked_test1_passed = linked_test.test1();
+    bool linked_test2_passed = linked_test.test2();
+    cout << "Test 3\n";
+    bool linked_test3_passed = linked_test.test3();
 
     cout << "---Sequential List Tests---" << endl;
     cout << "Test1: " << get_status_str(seq_test1_passed) << endl;
  	cout << "Test2: " << get_status_str(seq_test2_passed) << endl;
     cout << "Test3: " << get_status_str(seq_test3_passed) << endl;
     cout << endl;
-//    cout << "---Linked List Tests---" << endl;
-//    cout << "Test1: " << get_status_str(linked_test1_passed) << endl;
-//    cout << "Test2: " << get_status_str(linked_test2_passed) << endl;
-//    cout << "Test3: " << get_status_str(linked_test3_passed) << endl;
+    cout << "---Linked List Tests---" << endl;
+    cout << "Test1: " << get_status_str(linked_test1_passed) << endl;
+    cout << "Test2: " << get_status_str(linked_test2_passed) << endl;
+    cout << "Test3: " << get_status_str(linked_test3_passed) << endl;
 
     system("pause");
 }

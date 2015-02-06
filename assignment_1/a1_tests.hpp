@@ -7,6 +7,8 @@
 #define ASSERT_TRUE(T) if (!(T)) return false;
 #define ASSERT_FALSE(T) if ((T)) return false;
 
+#include <cstdlib>
+#include <iostream>
 class SequentialListTest
 {
 public:
@@ -14,7 +16,6 @@ public:
     {
         unsigned int capacity = 5;
         SequentialList list(capacity);
-        
         ASSERT_TRUE(list.size() == 0)
         ASSERT_TRUE(list.capacity() == capacity)
         ASSERT_TRUE(list.empty() == true)
@@ -77,7 +78,7 @@ public:
         DoublyLinkedList list1, list2;
         list1.insert_front(100);
         list2.insert_back(100);
-    
+   
         ASSERT_TRUE(list1.size() == list2.size() && list1.size() == 1)
         ASSERT_TRUE(list1.head_ != NULL && list1.head_ == list1.tail_)
         ASSERT_TRUE(list2.head_ != NULL && list2.head_ == list2.tail_)
@@ -94,7 +95,6 @@ public:
         for (int i = 0; i < num_elems; i++) {
             ASSERT_TRUE(list.insert_back(i*100))
         }
-        
         unsigned int idx = 3;
         ASSERT_TRUE(list.search(list.select(idx)) == idx)
         ASSERT_TRUE(list.select(num_elems + 1) == NULL)
