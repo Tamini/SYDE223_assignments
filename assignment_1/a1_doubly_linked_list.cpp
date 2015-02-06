@@ -100,16 +100,27 @@ bool DoublyLinkedList::insert(DataType value, unsigned int index)
 			head_ = newNode;
 		}
 		head_ -> next = tail_;
-		head_ -> prev = tail_;
+		head_ -> prev = NULL;
 		tail_ -> prev = head_;
-		tail_ -> next = head_;
+		tail_ -> next = NULL;
+		return true;
+	}
+	if (index == 0) {
+		newNode -> next = head_;
+		head_ -> prev = newNode;
+		newNode -> prev = NULL;
+		head_ = newNode;
+		return true;
+	}
+	if (index == size_ - 1){
+		newNode -> next = NULL;
+		tail_ -> next = newNode;
+		newNode -> prev = tail_;
+		tail_ = newNode;
 		return true;
 	}
 	Node* previous;
-	if (index != 0)
-		previous = getNode(index - 1);
-	else
-		previous = tail_;
+	previous = getNode(index - 1);
 	Node* nextNode = previous -> next;
 	previous -> next = newNode;
 	newNode -> prev = previous;
@@ -130,16 +141,49 @@ bool DoublyLinkedList::insert_back(DataType value)
 
 bool DoublyLinkedList::remove(unsigned int index)
 {
+	if (index >= size_ || index < 0)
+		return false;
+	Node* previous = head_;
+	for (int i = 0; i < index - 1; i++)
+	{
+		previous = previous -> next;
+	}
+	Node* next = previous -> next -> next;
+	delete(previous -> next);
+	previous -> next = next;
+	next -> prev = previous;
+	return true;
 }
 
 bool DoublyLinkedList::remove_front()
 {
+	if (size_ == 0)
+		return false;
+	head_ = head_ -> next;
+	delete(head_ -> prev);
+	head_ -> prev = NULL;
+	return true;
 }
 
 bool DoublyLinkedList::remove_back()
 {
+	if (size_ == 0)
+		return false;
+	tail_ = tail_ -> prev;
+	delete(tail_ -> next);
+	tail_ -> next = NULL;
+	return true;
 }
 
 bool DoublyLinkedList::replace(unsigned int index, DataType value)
 {
+	if (index >= size_ || index < 0)
+		return false;
+	Node* curr = head_;
+	for (int i = 0; i < index; i++)
+	{
+		curr = curr -> next;
+	}
+	curr -> value = value;
+	return true;
 }
