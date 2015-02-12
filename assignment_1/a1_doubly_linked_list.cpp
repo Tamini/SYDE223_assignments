@@ -17,7 +17,9 @@ DoublyLinkedList::DoublyLinkedList()
 
 DoublyLinkedList::~DoublyLinkedList()
 {
-	
+	for (; size_ > 0; size_--){
+		remove_front();
+	}
 }
 
 unsigned int DoublyLinkedList::size() const
@@ -67,10 +69,10 @@ unsigned int DoublyLinkedList::search(DataType value) const
 void DoublyLinkedList::print() const
 {
 	Node* current = head_;
-	do{
+	for (int i = 0; i < size_ ; i++){
 		std::cout << current -> value << ",";
 		current = current -> next;
-	}while (current -> next != head_);
+	}
 }
 
 DoublyLinkedList::Node* DoublyLinkedList::getNode(unsigned int index) const
@@ -86,7 +88,7 @@ DoublyLinkedList::Node* DoublyLinkedList::getNode(unsigned int index) const
 bool DoublyLinkedList::insert(DataType value, unsigned int index)
 {
 	Node* newNode = new Node(value);
-	size_ ++;
+	size_ += 1;
 	if (size_ == 1) {
 		head_ = newNode;
 		tail_ = newNode;
@@ -141,27 +143,47 @@ bool DoublyLinkedList::insert_back(DataType value)
 
 bool DoublyLinkedList::remove(unsigned int index)
 {
-	if (index >= size_ || index < 0)
+	if (index < 0 || index >= size_)
 		return false;
-	Node* previous = head_;
-	for (int i = 0; i < index - 1; i++)
+	if (index == 0)
+		return remove_front();
+	if (index == size_)
+		return remove_back();
+	Node* node = head_;
+	for (int i = 0; i < index; i++)
 	{
-		previous = previous -> next;
+		node = node -> next;
 	}
-	Node* next = previous -> next -> next;
-	delete(previous -> next);
-	previous -> next = next;
-	next -> prev = previous;
+	node -> prev -> next = node -> next;
+	node -> next -> prev = node -> prev;
+	delete (node);
+	size_ -= 1;
 	return true;
+//	if (index >= size_ || index < 0)
+//		return false;
+//	Node* previous = head_;
+//	for (int i = 0; i < index - 1; i++)
+//	{
+//		previous = previous -> next;
+//	}
+//	Node* next = previous -> next -> next;
+//	delete(previous -> next);
+//	previous -> next = next;
+//	next -> prev = previous;
+//	return true;
 }
 
 bool DoublyLinkedList::remove_front()
 {
 	if (size_ == 0)
 		return false;
+	if (size_ == 1){
+		delete(head_);
+		return true;
+	}
 	head_ = head_ -> next;
 	delete(head_ -> prev);
-	head_ -> prev = NULL;
+	size_-= 1;
 	return true;
 }
 
@@ -169,9 +191,13 @@ bool DoublyLinkedList::remove_back()
 {
 	if (size_ == 0)
 		return false;
+	if (size_ == 1){
+		delete(head_);
+		return true;
+	}
+	size_-= 1;
 	tail_ = tail_ -> prev;
-	delete(tail_ -> next);
-	tail_ -> next = NULL;
+	delete (tail_ -> next);
 	return true;
 }
 
