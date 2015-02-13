@@ -159,18 +159,6 @@ bool DoublyLinkedList::remove(unsigned int index)
 	delete (node);
 	size_ -= 1;
 	return true;
-//	if (index >= size_ || index < 0)
-//		return false;
-//	Node* previous = head_;
-//	for (int i = 0; i < index - 1; i++)
-//	{
-//		previous = previous -> next;
-//	}
-//	Node* next = previous -> next -> next;
-//	delete(previous -> next);
-//	previous -> next = next;
-//	next -> prev = previous;
-//	return true;
 }
 
 bool DoublyLinkedList::remove_front()

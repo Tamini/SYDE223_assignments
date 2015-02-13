@@ -10,7 +10,7 @@ SequentialList::SequentialList(unsigned int cap)
 
 SequentialList::~SequentialList()
 {
-	delete(data_);
+	delete[] data_;
 }
 
 unsigned int SequentialList::size() const
