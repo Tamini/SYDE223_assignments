@@ -21,7 +21,6 @@ int main()
 
     bool linked_test1_passed = linked_test.test1();
     bool linked_test2_passed = linked_test.test2();
-    cout << "Test 3\n";
     bool linked_test3_passed = linked_test.test3();
 
     cout << "---Sequential List Tests---" << endl;
