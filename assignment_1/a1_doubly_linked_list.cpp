@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Tristan Amini - 20517967
-// Keren Chandren - 20516240
+// Keren Chandran - 20516240
 
 DoublyLinkedList::Node::Node(DataType data)
 {
