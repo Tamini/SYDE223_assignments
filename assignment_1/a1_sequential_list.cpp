@@ -1,6 +1,9 @@
 #include "a1_sequential_list.hpp"
 #include <iostream>
 
+// Tristan Amini - 20517967
+// Keren Chandren - 
+
 SequentialList::SequentialList(unsigned int cap)
 {
 	capacity_ = cap;
@@ -55,9 +58,10 @@ unsigned int SequentialList::search(DataType val) const
 
 void SequentialList::print() const
 {
-	for (int i = 0; i < size_; i++){
+	for (int i = 0; i < size_ - 1; i++){
 		std::cout << *(data_ + i) << ", ";
 	}
+	std::cout << *(data_ + size_-1);
 	std::cout << std::endl;
 }
 

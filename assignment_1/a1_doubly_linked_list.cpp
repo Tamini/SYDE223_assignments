@@ -69,10 +69,11 @@ unsigned int DoublyLinkedList::search(DataType value) const
 void DoublyLinkedList::print() const
 {
 	Node* current = head_;
-	for (int i = 0; i < size_ ; i++){
+	for (int i = 0; i < size_ -1; i++){
 		std::cout << current -> value << ",";
 		current = current -> next;
 	}
+	std::cout << current-> value << "\n";
 }
 
 DoublyLinkedList::Node* DoublyLinkedList::getNode(unsigned int index) const
