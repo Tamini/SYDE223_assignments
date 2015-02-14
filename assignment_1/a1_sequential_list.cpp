@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Tristan Amini - 20517967
-// Keren Chandren - 
+// Keren Chandren - 20516240
 
 SequentialList::SequentialList(unsigned int cap)
 {

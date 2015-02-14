@@ -63,13 +63,17 @@ public:
     	for (int i = 0; i < num_elems; i++) {
             ASSERT_TRUE(list.insert_back(i*100))
         }
-        list.print();
-        list.remove_front();
-        list.print();
-        list.remove_back();
-        list.print();
-        list.remove(1);
-        list.print();
+
+		ASSERT_TRUE(list.remove(3));
+        ASSERT_TRUE(list.insert(1000,3));
+        ASSERT_TRUE(list.remove_front());
+        ASSERT_TRUE(list.insert_front(2000));
+        ASSERT_TRUE(list.remove_back());
+        ASSERT_TRUE(list.insert_back(3000));
+        ASSERT_TRUE(list.replace(2,5000));
+        list.print(); //2000 100 5000 1000 3000
+        std::cout << list.search(200); //5
+        std::cout<<std::endl;
         return true;
     }
 
