@@ -50,6 +50,7 @@ unsigned int SequentialList::search(DataType val) const
 		if (*(data_ + i) == val)
 			return i;
 	}
+	return size_;
 }
 
 void SequentialList::print() const
@@ -116,9 +117,9 @@ bool SequentialList::remove(unsigned int index)
 
 bool SequentialList::remove_front()
 {
-	remove(0);
 	if (size_ == 0)
 		return false;
+	return remove(0);
 }
 
 bool SequentialList::remove_back()

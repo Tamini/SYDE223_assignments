@@ -27,6 +27,8 @@ int main()
     cout << "Test1: " << get_status_str(seq_test1_passed) << endl;
  	cout << "Test2: " << get_status_str(seq_test2_passed) << endl;
     cout << "Test3: " << get_status_str(seq_test3_passed) << endl;
+    cout << "Test4: " << endl;
+    seq_test.test4();
     cout << endl;
     cout << "---Linked List Tests---" << endl;
     cout << "Test1: " << get_status_str(linked_test1_passed) << endl;

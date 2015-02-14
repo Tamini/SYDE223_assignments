@@ -56,6 +56,22 @@ public:
         }
         return true;
     }
+    
+    bool test4(){
+    	DoublyLinkedList list;
+    	const int num_elems = 5;
+    	for (int i = 0; i < num_elems; i++) {
+            ASSERT_TRUE(list.insert_back(i*100))
+        }
+        list.print();
+        list.remove_front();
+        list.print();
+        list.remove_back();
+        list.print();
+        list.remove(1);
+        list.print();
+        return true;
+    }
 
 };
 
@@ -107,6 +123,7 @@ public:
         ASSERT_TRUE(list.head_->prev == NULL && list.tail_->next == NULL)
         return true;
     }
+    
 
 };
 
