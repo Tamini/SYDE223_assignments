@@ -9,6 +9,7 @@ PriorityQueue::PriorityQueue(unsigned int capacity){
 
 PriorityQueue::~PriorityQueue(){
     delete[] heap_;
+    size_=0;
 }
 
 unsigned int PriorityQueue::size() const{
@@ -31,21 +32,21 @@ void PriorityQueue::print() const{
 PriorityQueue::DataType PriorityQueue::max() const{
     if (size_ == 0)
         return NULL;
-    return heap_[0];
+    return heap_[1];
 }
 
 bool PriorityQueue::enqueue(DataType val){
     if (size_ == capacity_)
         return false;
+    size_++;
     heap_[size_] = val;
-    for (int i = size_ +1; i > 1; i= (i-1) / 2){
-        if (heap_[i] > heap_[(i-1) / 2]){
-            DataType temp = heap_[(i-1) / 2];
-            heap_[(i-1) / 2] = heap_[i];
+    for (int i = size_; i > 1; i= (i) / 2){
+        if (heap_[i] > heap_[(i) / 2]){
+            DataType temp = heap_[(i) / 2];
+            heap_[(i) / 2] = heap_[i];
             heap_[i] = temp;
         }
     }
-    size_++;
     return true;
 }
 
@@ -69,9 +70,5 @@ bool PriorityQueue::dequeue(){
         else
             break;
     }
-    return true;
-}
-
-bool heapify(){
     return true;
 }
